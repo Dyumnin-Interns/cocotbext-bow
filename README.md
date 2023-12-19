@@ -1,3 +1,21 @@
+
+`pip3 install cocotbext-bow`
+
+```
+from cocotbext.bow import BOWDriver, BOWConfig
+cfg=BOWConfig(...)
+bow=BOWDriver(dut,prefix,cfg,callback=cb,...)
+await bow.write(address,data)
+rdata=await bow.read(address,numbytes)
+try:
+   bow.regress()
+except e:
+    cocotb.log.info("Regression failed")
+async def cb(txn):
+  address=txn['address']
+  data=txn['data']
+  ....
+```
 # BOW (Bunch Of Wires) Documentation
 
   
